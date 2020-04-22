@@ -60,16 +60,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\BaseChampion.cs" />
-    <Compile Include="Assets\Scripts\BattleGUI.cs" />
-    <Compile Include="Assets\Scripts\BattleManager.cs" />
-    <Compile Include="Assets\Scripts\ChampionOrder.cs" />
-    <Compile Include="Assets\Scripts\ChampionStats.cs" />
-    <Compile Include="Assets\Scripts\DebugHelper.cs" />
-    <Compile Include="Assets\Scripts\EnemyChampion.cs" />
+    <Compile Include="Assets\Scripts\Battle\ActionButton.cs" />
+    <Compile Include="Assets\Scripts\Battle\BaseChampion.cs" />
+    <Compile Include="Assets\Scripts\Battle\BattleActions.cs" />
+    <Compile Include="Assets\Scripts\Battle\BattleGUI.cs" />
+    <Compile Include="Assets\Scripts\Battle\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Battle\ChampionOrder.cs" />
+    <Compile Include="Assets\Scripts\Battle\ChampionStats.cs" />
+    <Compile Include="Assets\Scripts\Battle\EnemyChampion.cs" />
+    <Compile Include="Assets\Scripts\Battle\PlayerChampion.cs" />
+    <Compile Include="Assets\Scripts\Battle\PlayerInfoPanel.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerChampion.cs" />
+    <Compile Include="Assets\Scripts\MacFetcher.cs" />
+    <Compile Include="Assets\Scripts\PrefabManager.cs" />
     <Compile Include="Assets\Scripts\Randomizer.cs" />
+    <Compile Include="Assets\Scripts\SeedGenerator.cs" />
     <Compile Include="Assets\Scripts\Traits\ImageTrait.cs" />
     <Compile Include="Assets\Scripts\Traits\Trait.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -90,19 +95,19 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity 2018.3.5f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -306,13 +311,13 @@
       <HintPath>C:/Program Files/Unity 2018.3.5f1/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>C:/Unity Projects/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>C:/GitHub/Unique-Adventures/Unique Adventures/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity 2018.3.5f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>

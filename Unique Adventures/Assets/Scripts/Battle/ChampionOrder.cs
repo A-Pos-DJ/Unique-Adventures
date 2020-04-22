@@ -8,7 +8,7 @@ public class ChampionOrder : MonoBehaviour
     List<PlayerChampion> playerCharacters;                    //a list of player champions that represent the player
     List<EnemyChampion> enemyCharacters;                      //a list of enemy champions that represent the enemies
 
-    public BaseChampion currentChampionTurn;                  //The current champion that is selecting an action
+    public static BaseChampion currentChampionTurn;           //The current champion that is selecting an action
     List<BaseChampion> turnOrder;                             //The order in which champions can select actions
 
 
@@ -27,7 +27,6 @@ public class ChampionOrder : MonoBehaviour
     public IEnumerator NewChampionRound()
     {
         //clear the turn order and rebuild
-        Debug.Log("Starting a new round of combat");
         turnOrder.Clear();
 
         //determine which list has the highest number of champions
@@ -59,7 +58,7 @@ public class ChampionOrder : MonoBehaviour
     {
         //if it is the not the player's turn... have the enemy calculate an action.. otherwise wait for user input
         if (currentChampionTurn.GetComponent<PlayerChampion>() == null)
-            currentChampionTurn.GetTurnAction();
+            currentChampionTurn.GetComponent<EnemyChampion>().DetermineAction();
         //wait for the champion's action to finish before continuing
         while (!currentChampionTurn.actionTaken) { yield return null; }
         currentChampionTurn.currentTurn = false;

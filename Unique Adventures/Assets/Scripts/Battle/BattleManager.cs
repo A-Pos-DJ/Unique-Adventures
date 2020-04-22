@@ -10,13 +10,15 @@ public class BattleManager : MonoBehaviour
     //                                                                                                //
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static BattleManager _manager;
+
     bool continueBattle;
 
     public GameObject playerChampionPrefab;
     public GameObject enemyChampionPrefab;
 
-    List<PlayerChampion> playerCharacters;              //a list of player champions that represent the player
-    List<EnemyChampion> enemyCharacters;                //a list of enemy champions that represent the enemies
+    public List<PlayerChampion> playerCharacters;              //a list of player champions that represent the player
+    public List<EnemyChampion> enemyCharacters;                //a list of enemy champions that represent the enemies
 
     ChampionOrder championOrder;                        //a champion order object to help with turn order
     BattleGUI battleGUI;                                //a battle GUI for players to see stats and make actions
@@ -48,6 +50,7 @@ public class BattleManager : MonoBehaviour
     //initalize the battle manager
     void InitManager()
     {
+        _manager = this;
         playerCharacters = new List<PlayerChampion>();
         enemyCharacters = new List<EnemyChampion>();
         championOrder = gameObject.transform.GetChild(0).GetComponent<ChampionOrder>();
@@ -94,7 +97,7 @@ public class BattleManager : MonoBehaviour
     void InitGUI()
     {
         battleGUI.Init(playerCharacters);
-        battleGUI.UpdateGUI();
+        battleGUI.UpdateGUIForNextTurn();
     }
 
     //initalize the battle before the loop starts
@@ -117,18 +120,30 @@ public class BattleManager : MonoBehaviour
     {
         while (continueBattle)
         {
-            battleGUI.SetBattleMessage("It is " + championOrder.currentChampionTurn.stats.name + "'s turn");
+            battleGUI.SetBattleMessage("It is " + ChampionOrder.currentChampionTurn.stats.name + "'s turn");
+            battleGUI.UpdateActionsAvailable(ChampionOrder.currentChampionTurn);
             yield return StartCoroutine(championOrder.CurrentChampionAction());
-            battleGUI.UpdateGUI();
+            battleGUI.UpdateGUIForNextTurn();
         }
         yield return null;
     }
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+    //                                                                                                //
+    //                                         Misc  Methods                                          //
+    //                                                                                                //
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+    public static GameObject CreateBattleObject(GameObject prefabArg, Vector3 positionArg, Quaternion rotationArg)
+    {
+        return Instantiate(prefabArg, positionArg, rotationArg);
+    }
 
-
-
+    public static void DestroyBattleObject(GameObject gameObjectArg)
+    {
+        Destroy(gameObjectArg.gameObject);
+    }
 
 
 }

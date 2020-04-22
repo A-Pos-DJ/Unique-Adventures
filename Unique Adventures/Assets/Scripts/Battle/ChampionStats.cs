@@ -49,16 +49,15 @@ public class ChampionStats
     public void RandomizePlayerStats()
     {
         name = "Rando";
-        int randomStat = Randomizer.RandomInt(5, 20);
 
-        HPmax = randomStat;
-        MPmax = randomStat;
-        strength = randomStat;
-        dexterity = randomStat;
-        constitution = randomStat;
-        inteligence = randomStat;
-        wisdom = randomStat;
-        charisma = randomStat;
+        HPmax = Randomizer.RandomInt(5, 20);
+        MPmax = Randomizer.RandomInt(5, 20);
+        strength = Randomizer.RandomInt(5, 20);
+        dexterity = Randomizer.RandomInt(5, 20);
+        constitution = Randomizer.RandomInt(5, 20);
+        inteligence = Randomizer.RandomInt(5, 20);
+        wisdom = Randomizer.RandomInt(5, 20);
+        charisma = Randomizer.RandomInt(5, 20);
 
 
         HPcurrent = HPmax;
@@ -70,16 +69,15 @@ public class ChampionStats
     public void RandomizeEnemyStats()
     {
         name = "Goblin";
-        int randomStat = Randomizer.RandomInt(3, 7);
 
-        HPmax = randomStat;
-        MPmax = randomStat;
-        strength = randomStat;
-        dexterity = randomStat;
-        constitution = randomStat;
-        inteligence = randomStat;
-        wisdom = randomStat;
-        charisma = randomStat;
+        HPmax = Randomizer.RandomInt(3, 7);
+        MPmax = Randomizer.RandomInt(3, 7);
+        strength = Randomizer.RandomInt(3, 7);
+        dexterity = Randomizer.RandomInt(3, 7);
+        constitution = Randomizer.RandomInt(3, 7);
+        inteligence = Randomizer.RandomInt(3, 7);
+        wisdom = Randomizer.RandomInt(3, 7);
+        charisma = Randomizer.RandomInt(3, 7);
 
 
         HPcurrent = HPmax;

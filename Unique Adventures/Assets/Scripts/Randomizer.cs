@@ -1,46 +1,32 @@
 ﻿using System;
 
-
 //the randomizer that will generate any random number for the entire project from a presistant seen
-public static class Randomizer
+public class Randomizer
 {
-    //Random instance class to hold the random seed statically without crashing unity
-    private class RandomInstance
-    {
-        public Random _random { get; private set; }
+    private static readonly Random random = new Random(GameManager.seed);
+    private static readonly object randomLock = new object();
 
-        //class constructor that creates a new random instance with the seed passed in from the game manger
-        public RandomInstance()
+    //a variable with passed in int paramters that generate presistent random values
+    public static int RandomInt(params int[] intParams)
+    {
+        //check the number of ints passed in
+        switch (intParams.Length)
         {
-            if (_random == null)
-                _random = new Random(GameManager.seed);
+            case 1:
+                lock (randomLock)
+                {
+                    return random.Next(intParams[0]);
+                }
+            case 2:
+                lock (randomLock)
+                {
+                    return random.Next(intParams[0], intParams[1]);
+                }
+            default:
+                lock (randomLock)
+                {
+                    return random.Next();
+                }
         }
-    }
-
-    //create a random instance class if there is not one already existing
-    private static RandomInstance _randomInstanceClass = _randomInstanceClass ?? new RandomInstance();
-
-
-
-
-    //a method to get a random int
-    public static int RandomInt()
-    {
-        int randomInt = _randomInstanceClass._random.Next();
-        return randomInt;
-    }
-
-    //a method to get a random int based on the passed in value
-    public static int RandomInt(int intValue)
-    {
-        int randomInt = _randomInstanceClass._random.Next(intValue);
-        return randomInt;
-    }
-
-    //a method to get a random int between two values
-    public static int RandomInt(int minInt, int maxInt)
-    {
-        int randomInt = _randomInstanceClass._random.Next(minInt, maxInt); 
-        return randomInt;
     }
 }
