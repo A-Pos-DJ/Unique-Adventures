@@ -5,33 +5,69 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager _game;
-    public static string name = "DJ?";
-    public static int seed = SeedGenerator.StringToInt(name);             //persistant seed to be used throughout random number generation
+    public static PrefabManager _prefabs;
+    public static StringManager _strings;
+    public static BattleManager _battle;
+    public static BattleBackdropManager _backdrop;
+    public static string playerName = null;
+    public static int seed = 0;             //persistant seed to be used throughout random number generation
 
+    public bool playerNameEntered = false;
+    public string nameTextfield = "Insert Name Here";
+    public GameObject nameButtonPrefab;
 
-    GameObject playerPrefab;                    //player prefab
-    GameObject player;                          //the current player
+    public List<PlayerChampion> playerCharacters;                               //a list of player champions that represent the players
+
+    GameObject mainCharacter;                                                   //the current player
 
 
     // Start is called before the first frame update
     void Start()
     {
         _game = this;
+        CreateEnterButton(gameObject.transform.position, "Submit Name");
+    }
+
+    //initalize the game manager
+    public void Init()
+    {
+        _prefabs = GetComponent<PrefabManager>();
+        _strings = GetComponent<StringManager>();
+        _battle = GameObject.Find("BattleManager").GetComponent<BattleManager>();
+        _backdrop = GameObject.Find("BattleBackdrop").GetComponent<BattleBackdropManager>();
+
+        seed = SeedGenerator.StringToInt(playerName);
         Debug.Log("Current Seed: " + seed.ToString());
-        //player = GenerateRandomPlayer();
+
+        playerCharacters = new List<PlayerChampion>();
+        playerCharacters.Add(PlayerGenerator.CreateNewCharacter(_prefabs.playerChampionPrefab, playerName));
+        mainCharacter = playerCharacters[0].gameObject;
+        playerCharacters.Add(PlayerGenerator.CreateNewCharacter(_prefabs.playerChampionPrefab));
+
+        _battle.Init();
+        _backdrop.Init();
     }
 
-    /*
-    // Update is called once per frame
-    void Update()
+    //spawns a button for the user to enter their name
+    private void CreateEnterButton(Vector3 position, string buttonName)
     {
-        
+        GameObject newButtonObject = Instantiate(nameButtonPrefab, position, Quaternion.identity);
+        NameButton newButton = newButtonObject.GetComponent<NameButton>();
+
+        newButton.Init(buttonName);
     }
 
-    GameObject GenerateRandomPlayer()
+    void OnGUI()
     {
-
-
+        if (!playerNameEntered)
+        {
+            // Make a text field that modifies stringToEdit.
+            nameTextfield = GUI.TextField(new Rect(475, 250, 150, 20), nameTextfield, 25);
+        }
     }
-    */
+
+
+
+
+
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 
 //enumerator for all stats avaiable
 enum Stat
@@ -17,7 +18,7 @@ enum Stat
 
 public class ChampionStats
 {
-    public string name;
+    public string championName;
 
     public int HPcurrent;
     public int HPmax;
@@ -32,7 +33,7 @@ public class ChampionStats
 
     public override string ToString()
     {
-        string text = name + ":\n"
+        string text = championName + ":\n"
             + "Max HP - " + HPmax + " / "
             + "Max MP - " + MPmax + " / "
             + "Str - " + strength + " / "
@@ -45,30 +46,32 @@ public class ChampionStats
         return text;
     }
 
-    //a method that randomizes all player stats
-    public void RandomizePlayerStats()
+    //a method that distributes points for player stats
+    public void RandomizePlayerStats(string playerNameArg)
     {
-        name = "Rando";
+        championName = playerNameArg;
 
-        HPmax = Randomizer.RandomInt(5, 20);
-        MPmax = Randomizer.RandomInt(5, 20);
-        strength = Randomizer.RandomInt(5, 20);
-        dexterity = Randomizer.RandomInt(5, 20);
-        constitution = Randomizer.RandomInt(5, 20);
-        inteligence = Randomizer.RandomInt(5, 20);
-        wisdom = Randomizer.RandomInt(5, 20);
-        charisma = Randomizer.RandomInt(5, 20);
+        int[] pointDistribution = PointBuyStatGeneration(5, 10, 2, 20);
+        HPmax = pointDistribution[0];
+        MPmax = pointDistribution[1];
 
+        int[] attributeDistribution = PointBuyStatGeneration(7, 38, 6, 18);
+        strength = attributeDistribution[0];
+        dexterity = attributeDistribution[1];
+        constitution = attributeDistribution[2];
+        inteligence = attributeDistribution[3];
+        wisdom = attributeDistribution[4];
+        charisma = attributeDistribution[5];
 
+ 
         HPcurrent = HPmax;
         MPcurrent = MPmax;
-        
     }
 
     //a method that randomizes all enemy stats
-    public void RandomizeEnemyStats()
+    public void RandomizeEnemyStats(string enemyNameArg)
     {
-        name = "Goblin";
+        championName = enemyNameArg;
 
         HPmax = Randomizer.RandomInt(3, 7);
         MPmax = Randomizer.RandomInt(3, 7);
@@ -82,6 +85,34 @@ public class ChampionStats
 
         HPcurrent = HPmax;
         MPcurrent = MPmax;
+    }
 
+    //returns a random int array of stat values based on a point buy system
+    public int[] PointBuyStatGeneration(int baseValueOfStats, int numberOfPointsToDistribute, int numberOfStats, int statThreshold)
+    {
+        int pointsRemaining = numberOfPointsToDistribute;
+        int[] stats = new int[numberOfStats];
+
+        //set all stat values to the base value
+        for (int idx = 0; idx < stats.Length; idx++)
+        {
+            stats[idx] = baseValueOfStats;
+        }
+
+        //Loop though while loop until there are no more points to be distributed
+        while(pointsRemaining > 0)
+        {
+            //get a random stat index
+            int randomStatIndex = Randomizer.RandomInt(0, stats.Length);
+
+            //if the stat will not exceed the threshold... add the point to it
+            if (stats[randomStatIndex] + 1 <= statThreshold)
+            {
+                stats[randomStatIndex]++;
+                pointsRemaining--;
+            }
+        }
+
+        return stats;
     }
 }

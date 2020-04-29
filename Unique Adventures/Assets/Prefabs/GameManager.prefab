@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9213044892711445814}
   - component: {fileID: 2336522905774909054}
+  - component: {fileID: 696708400}
+  - component: {fileID: 6650320496696109430}
+  - component: {fileID: 4773110238824113511}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -43,3 +46,163 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f39453dce2d477d44ad8fe66ec99ff5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerNameEntered: 0
+  nameTextfield: Insert Name Here
+  nameButtonPrefab: {fileID: 4873766678178521133, guid: 1e487d5f15d4d954d8e24da8a8599627,
+    type: 3}
+  playerCharacters: []
+--- !u!114 &696708400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930452687791589184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 372005f89122ff24a915eca8214e1094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerChampionPrefab: {fileID: 9138902625704151876, guid: e0e5665a92c996a4bb20af8dc7c37976,
+    type: 3}
+  enemyChampionPrefab: {fileID: 9132309099024518210, guid: dc6f5abd9d359cb4f828d651886c59d3,
+    type: 3}
+  horusChampionPrefab: {fileID: 7250598711509535886, guid: 47db1ae60ceb8a34ab01bfd7a17043c9,
+    type: 3}
+  iskanderChampionPrefab: {fileID: 601213633707674009, guid: 6bd83e010bb51254da48500a23881ab5,
+    type: 3}
+  drakeChampionPrefab: {fileID: 2600557185822005025, guid: a2df9f27291b42544b347c39e3559dc3,
+    type: 3}
+  actionButtonPrefab: {fileID: 5337357511112563881, guid: 53fc1ad55a213f14db0b14114143442c,
+    type: 3}
+--- !u!114 &6650320496696109430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930452687791589184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c6123bff8a8fb548813e4b23b5a1548, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySprites:
+  - {fileID: 0}
+--- !u!114 &4773110238824113511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930452687791589184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522977966fe6a064b8f7cc567ced92c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameDatabase:
+  - Abigail
+  - Ace
+  - Achilles
+  - Artemis
+  - Bender
+  - Belle
+  - Beowulf
+  - Blue
+  - Caleb
+  - Caledon
+  - Cassandra
+  - Castiel
+  - Daenerys
+  - Daphne
+  - Darla
+  - Deacon
+  - Ebenezer
+  - Eddard
+  - Eleanor
+  - Eloise
+  - Fargo
+  - Felix
+  - Forrest
+  - Fox
+  - Gabriel
+  - Genevieve
+  - Geordi
+  - Gidget
+  - Hamlet
+  - Harper
+  - Harriet
+  - Hazel
+  - Ichabod
+  - Isaac
+  - Isabella
+  - Isla
+  - Jace
+  - Jackson
+  - Jacquotte
+  - Jenni
+  - Katniss
+  - Kent
+  - Kermit
+  - Khadija
+  - Lance
+  - Landon
+  - Leia
+  - Lilith
+  - Macbeth
+  - Magenta
+  - Marcia
+  - Maria
+  - Napoleon
+  - Nev
+  - Nixie
+  - Nora
+  - Olenna
+  - Olive
+  - Oscar
+  - Othello
+  - Penelope
+  - Phoebe
+  - Portia
+  - Praxidike
+  - Quinn
+  - Quincy
+  - Qing
+  - Questa
+  - Rachel
+  - Ragnard
+  - Ramona
+  - Raylan
+  - Sabrina
+  - Sadie
+  - Samuel
+  - Sansa
+  - Theon
+  - Thurston
+  - Tiberius
+  - Titania
+  - Uriah
+  - Uther
+  - Umi
+  - Ursa
+  - Vahn
+  - Vaiana
+  - Violet
+  - Vivian
+  - Webster
+  - William
+  - Willson
+  - Wade
+  - Xorn
+  - Xenia
+  - Xola
+  - Xuan
+  - Ygritte
+  - Yachi
+  - Yan
+  - Yael
+  - Ziggy
+  - Zac
+  - Zara
+  - Zephyr

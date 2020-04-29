@@ -6,15 +6,17 @@ using UnityEngine;
 public abstract class BaseChampion : MonoBehaviour
 {
     public BaseChampion targetChampion;
-    BattleActions currentAction;
+    public BattleActions currentAction;
     public List<BattleActions> actions;
 
     public bool currentTurn;
     public bool targetConfirmed;
     public bool actionTaken;
+    public bool canTakeAction;
 
     public ChampionStats stats;
     public Sprite body;
+    public BoxCollider2D colliderObj;
 
 
     //initalizer for the champion in battle
@@ -22,7 +24,9 @@ public abstract class BaseChampion : MonoBehaviour
     {
         stats = new ChampionStats();
         body = gameObject.transform.GetChild(0).GetComponent<Sprite>();
+        colliderObj = GetComponent<BoxCollider2D>();
         actions = new List<BattleActions>();
+        canTakeAction = true;
 
         gameObject.AddComponent<BattleActions.Attack>();
         gameObject.AddComponent<BattleActions.Defend>();
@@ -49,5 +53,41 @@ public abstract class BaseChampion : MonoBehaviour
 
         targetChampion = targetArg;
         targetConfirmed = true;
+    }
+
+    //the champion takes damage
+    public virtual void TakeDamage(int damageTaken)
+    {
+        //if the amount of damage taken is less than or equal to 0... return
+        if (damageTaken <= 0) { return; }
+        //if the amount of damage taken is greater than the amount of HP left.. kill this champion
+        if (stats.HPcurrent - damageTaken <= 0)
+        {
+            stats.HPcurrent = 0;
+            Death();
+        }
+        else
+            stats.HPcurrent -= damageTaken;
+    }
+
+    //this champion dies
+    public virtual void Death()
+    {
+        BattleGUI._battleGUI.SetBattleMessage(stats.championName + " has been defeated!");
+        BattleManager._manager.RemoveFromBattle(this);
+        canTakeAction = false;
+        gameObject.SetActive(false);
+    }
+
+    //when this object is destoyed...
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
+    //when the button gets clicked...
+    void OnMouseDown()
+    {
+        ChampionOrder.currentChampionTurn.SelectTarget(GetComponent<BaseChampion>());
     }
 }
