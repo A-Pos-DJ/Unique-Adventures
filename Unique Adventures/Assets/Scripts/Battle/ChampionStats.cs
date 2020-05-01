@@ -1,21 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 
-//enumerator for all stats avaiable
-enum Stat
-{
-    HPcurrent,
-    HPmax,
-    MPcurrent,
-    MPmax,
-    Strength,
-    Dexterity,
-    Constitution,
-    Inteligence,
-    Wisdom,
-    Charisma
-};
-
 public class ChampionStats
 {
     public string championName;
@@ -73,14 +58,14 @@ public class ChampionStats
     {
         championName = enemyNameArg;
 
-        HPmax = Randomizer.RandomInt(3, 7);
+        HPmax = Randomizer.RandomInt(10, 20);
         MPmax = Randomizer.RandomInt(3, 7);
-        strength = Randomizer.RandomInt(3, 7);
-        dexterity = Randomizer.RandomInt(3, 7);
-        constitution = Randomizer.RandomInt(3, 7);
-        inteligence = Randomizer.RandomInt(3, 7);
-        wisdom = Randomizer.RandomInt(3, 7);
-        charisma = Randomizer.RandomInt(3, 7);
+        strength = Randomizer.RandomInt(6, 10);
+        dexterity = Randomizer.RandomInt(6, 10);
+        constitution = Randomizer.RandomInt(8, 12);
+        inteligence = Randomizer.RandomInt(6, 10);
+        wisdom = Randomizer.RandomInt(6, 10);
+        charisma = Randomizer.RandomInt(6, 10);
 
 
         HPcurrent = HPmax;

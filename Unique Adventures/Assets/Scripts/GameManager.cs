@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static BattleManager _battle;
     public static BattleBackdropManager _backdrop;
     public static string playerName = null;
-    public static int seed = 0;             //persistant seed to be used throughout random number generation
+    public static int seed = 0;                                     //persistant seed to be used throughout random number generation
 
     public bool playerNameEntered = false;
     public string nameTextfield = "Insert Name Here";
@@ -62,7 +62,8 @@ public class GameManager : MonoBehaviour
         if (!playerNameEntered)
         {
             // Make a text field that modifies stringToEdit.
-            nameTextfield = GUI.TextField(new Rect(475, 250, 150, 20), nameTextfield, 25);
+            
+            nameTextfield = GUI.TextField(new Rect((Screen.width/2)-75, (Screen.height/2) - 10, 150, 20), nameTextfield, 25);
         }
     }
 

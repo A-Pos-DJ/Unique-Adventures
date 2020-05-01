@@ -17,10 +17,11 @@ public class BattleManager : MonoBehaviour
     public bool continueBattle;
 
     public List<PlayerChampion> playerCharacters;              //a list of player champions that represent the player
-    public List<BaseEnemyChampion> enemyCharacters;                //a list of enemy champions that represent the enemies
+    public List<BaseEnemyChampion> enemyCharacters;            //a list of enemy champions that represent the enemies
 
     ChampionOrder championOrder;                               //a champion order object to help with turn order
     BattleGUI battleGUI;                                       //a battle GUI for players to see stats and make actions
+
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                                                                //
@@ -58,7 +59,7 @@ public class BattleManager : MonoBehaviour
     void GenerateRandomEnemy()
     {
         Vector3 spawnPosition = new Vector3(0f, 0.0f, 5f);
-        GameObject enemyChampion = Instantiate(GameManager._prefabs.drakeChampionPrefab, spawnPosition, Quaternion.identity);
+        GameObject enemyChampion = Instantiate(GameManager._prefabs.randomEnemyPrefab, spawnPosition, Quaternion.identity);
         enemyCharacters.Add(enemyChampion.GetComponent<BaseEnemyChampion>());
     }
 

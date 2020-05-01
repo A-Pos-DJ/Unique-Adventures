@@ -36,7 +36,8 @@ public class StringManager : MonoBehaviour
     };
 
     public string randomPlayerName
-    { get
+    {
+        get
         {
             return nameDatabase[Randomizer.RandomInt(0, nameDatabase.Length - 1)];
         }

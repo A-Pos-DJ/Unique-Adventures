@@ -1,31 +1,6 @@
 ﻿//a class used for converting values into seeds
 public static class SeedGenerator
 {
-    //converts a character to an int (makes a numerical char value accurate)
-    public static int CharToInt(this char charToBeConverted)
-    {
-        if (char.IsDigit(charToBeConverted))
-            return (int)(charToBeConverted - '0');
-        else
-            return (int)charToBeConverted;   
-    }
-
-    //concatenates two numbers for the purpose of creating a seed
-    public static int ConcatenateForSeed(int firstNumber, int secondNumber)
-    {
-        int result;
-        string combinedString = firstNumber.ToString() + secondNumber.ToString();
-
-        //if the numbers can be combines with no issues, return the result
-        if (int.TryParse(combinedString, out result)) return result;
-        //if the numbers combined will cause an int overflow... subtract the second number
-        if (long.Parse(combinedString) > int.MaxValue) return firstNumber - secondNumber;
-        //if the numbers combined will cause an int underflow... add the second number
-        else if (long.Parse(combinedString) < int.MinValue) return firstNumber + secondNumber;
-        //if all else fails... just return 0
-        else return 0;
-    }
-
     //converts a string to an integer that we will use for creating a persistent seed
     public static int StringToInt(string stringToBeConverted)
     {
@@ -44,5 +19,30 @@ public static class SeedGenerator
         }
         //return the random seed
         return randomSeed;
+    }
+
+    //concatenates two numbers for the purpose of creating a seed
+    public static int ConcatenateForSeed(int firstNumber, int secondNumber)
+    {
+        int result;
+        string combinedString = firstNumber.ToString() + secondNumber.ToString();
+
+        //if the numbers can be combines with no issues, return the result
+        if (int.TryParse(combinedString, out result)) return result;
+        //if the numbers combined will cause an int overflow... subtract the second number
+        if (long.Parse(combinedString) > int.MaxValue) return firstNumber - secondNumber;
+        //if the numbers combined will cause an int underflow... add the second number
+        else if (long.Parse(combinedString) < int.MinValue) return firstNumber + secondNumber;
+        //if all else fails... just return 0
+        else return 0;
+    }
+
+    //converts a character to an int (makes a numerical char value accurate)
+    public static int CharToInt(this char charToBeConverted)
+    {
+        if (char.IsDigit(charToBeConverted))
+            return (int)(charToBeConverted - '0');
+        else
+            return (int)charToBeConverted;
     }
 }

@@ -9,7 +9,7 @@ public class BattleGUI : MonoBehaviour
 {
     public static BattleGUI _battleGUI;
 
-    private float XButtonStartPos = -10.5f;
+    private float XButtonStartPos = -8.65f;
     private float YButtonStartPos = 6f;
 
     private List<PlayerChampion> players;
